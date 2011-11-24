@@ -72,5 +72,5 @@ public abstract class SimplexMCMCSampler extends SimplexSampler {
 	 * @param nrPoints the amount of points desired
 	 * @param hitFunction function to check for hits
 	 */
-	protected abstract RealMatrix createChain(int nrPoints, HitFunction hitFunction);
+	public abstract RealMatrix createChain(int nrPoints, HitFunction hitFunction);
 }

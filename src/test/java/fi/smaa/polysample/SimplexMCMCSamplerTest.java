@@ -21,7 +21,7 @@ public class SimplexMCMCSamplerTest {
 		sp = new ArrayRealVector(new double[] { 0.0, 0.2, 0.8} );
 		sampler = new SimplexMCMCSampler(3, 10000, 0, 1, sp) {
 			@Override
-			protected RealMatrix createChain(int nrPoints,
+			public RealMatrix createChain(int nrPoints,
 					HitFunction hitFunction) {
 				// TODO Auto-generated method stub
 				return null;
