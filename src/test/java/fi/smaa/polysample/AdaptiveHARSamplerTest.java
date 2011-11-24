@@ -1,5 +1,6 @@
 package fi.smaa.polysample;
 
+import static org.junit.Assert.*;
 import static org.junit.Assert.assertEquals;
 
 import org.apache.commons.math.linear.ArrayRealVector;
@@ -26,5 +27,10 @@ public class AdaptiveHARSamplerTest {
 		sampler = new AdaptiveHARSampler(3, 10000, 10, 2, null) { };
 		RealMatrix pts = sampler.sample();
 		assertEquals(10000, pts.getRowDimension());
+	}
+	
+	@Test
+	public void testCreateChain() {
+		fail();
 	}
 }

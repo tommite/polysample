@@ -9,12 +9,14 @@ import org.apache.commons.math.linear.MatrixUtils;
 import org.apache.commons.math.linear.QRDecomposition;
 import org.apache.commons.math.linear.QRDecompositionImpl;
 import org.apache.commons.math.linear.RealMatrix;
+import org.apache.commons.math.linear.RealVector;
 import org.apache.commons.math.optimization.linear.LinearConstraint;
 import org.apache.commons.math.optimization.linear.Relationship;
 
 public class Transformation {
 	
 	private int dim;
+	private RealMatrix basis;
 
 	/**
 	 * PRECOND: dim > 1
@@ -24,9 +26,29 @@ public class Transformation {
 		assert(dim > 1);
 		
 		this.dim = dim;
+		this.basis = createBasis();
+	}
+	
+	public RealMatrix getBasis() {
+		return basis;
+	}
+	
+	/**
+	 * Transform vector back from n-1 to n dimensions
+	 * PRECOND: sampledVec.getDimension() == dim-1
+	 * @param sampledVec
+	 * @return
+	 */
+	public RealVector transformBack(RealVector sampledVec) {
+		assert(sampledVec.getDimension() == dim-1);
+		RealVector newVec = basis.operate(sampledVec);
+		for (int i=0;i<newVec.getDimension();i++) {
+			newVec.getData()[i] += 1.0/dim;
+		}
+		return newVec;
 	}
 
-	public RealMatrix getBasis() {
+	private RealMatrix createBasis() {
 		double[][] data = new double[dim][dim-1];
 		
 		for (int i=0;i<dim-1;i++) {

@@ -2,6 +2,7 @@ package fi.smaa.polysample;
 
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
 import java.util.Collections;
 import java.util.List;
@@ -11,9 +12,6 @@ import org.apache.commons.math.optimization.linear.LinearConstraint;
 import org.apache.commons.math.optimization.linear.Relationship;
 import org.junit.Before;
 import org.junit.Test;
-
-import fi.smaa.polysample.ConstraintFactory;
-import fi.smaa.polysample.Transformation;
 
 public class TransformationTest {
 
@@ -60,6 +58,11 @@ public class TransformationTest {
 		assertEquals(0.0, userCon.getCoefficients().getData()[2], 0.0001);
 		assertEquals(Relationship.LEQ, userCon.getRelationship());
 		assertEquals(0.0, userCon.getValue(), 0.0001);
+	}
+	
+	@Test
+	public void testTransformBack() {
+		fail();
 	}
 	
 }

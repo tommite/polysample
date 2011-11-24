@@ -11,7 +11,7 @@ public class AdaptiveHARSampler extends SimplexMCMCSampler {
 	}
 
 	@Override
-	protected RealMatrix createChain(int nrPoints, HitFunction hitFunction) {
+	public RealMatrix createChain(int nrPoints, HitFunction hitFunction) {
 		int ndim = dim-1; // sample in n-1 dims
 		
 		RealMatrix pts = new Array2DRowRealMatrix(nrPoints, ndim);
