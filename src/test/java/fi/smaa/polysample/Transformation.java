@@ -1,4 +1,4 @@
-package fi.smaa.prefsample;
+package fi.smaa.polysample;
 
 import java.util.ArrayList;
 import java.util.Collections;

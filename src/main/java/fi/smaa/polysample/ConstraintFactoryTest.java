@@ -1,11 +1,11 @@
-package fi.smaa.prefsample;
+package fi.smaa.polysample;
 import static org.junit.Assert.*;
 
 import org.apache.commons.math.optimization.linear.LinearConstraint;
 import org.apache.commons.math.optimization.linear.Relationship;
 import org.junit.Test;
 
-import fi.smaa.prefsample.ConstraintFactory;
+import fi.smaa.polysample.ConstraintFactory;
 
 
 public class ConstraintFactoryTest {

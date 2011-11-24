@@ -1,37 +1,38 @@
-package fi.smaa.prefsample;
+package fi.smaa.polysample;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
-import org.apache.commons.math.linear.ArrayRealVector;
-import org.apache.commons.math.linear.RealVector;
+import org.apache.commons.math.linear.RealMatrix;
 import org.apache.commons.math.optimization.linear.LinearConstraint;
 import org.apache.commons.math.optimization.linear.Relationship;
 import org.junit.Before;
 import org.junit.Test;
 
+import fi.smaa.polysample.SimplexSampler;
+
 public class SimplexSamplerTest {
 	
 	private SimplexSampler sampler;
-	private RealVector vec;
 	
 	@Before
 	public void setUp() {
-		vec = new ArrayRealVector(new double[] {1.0, 2.0, 3.0});		
-		sampler = new SimplexSampler(10, vec) { };
+		sampler = new SimplexSampler(3, 10000) {
+			@Override
+			public RealMatrix sample() {
+				// TODO Auto-generated method stub
+				return null;
+			} };
 	}
 
 	@Test
 	public void testGetNrSamples() {		
-		assertEquals(10, sampler.getNrSamples()); 
+		assertEquals(10000, sampler.getNrSamples()); 
 	}
 	
 	@Test
-	public void testConstructors() {
-		assertEquals(vec, sampler.getStartingPoint());
+	public void testConstructor() {
 		assertEquals(3, sampler.getDim());		
-		sampler = new SimplexSampler(2, 20) { };
-		assertEquals(null, sampler.getStartingPoint());
-		assertEquals(2, sampler.getDim());
 	}
 	
 	@Test

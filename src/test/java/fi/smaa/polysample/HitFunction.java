@@ -1,4 +1,4 @@
-package fi.smaa.prefsample;
+package fi.smaa.polysample;
 
 import org.apache.commons.math.linear.RealVector;
 

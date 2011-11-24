@@ -1,4 +1,4 @@
-package fi.smaa.prefsample;
+package fi.smaa.polysample;
 
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
@@ -11,6 +11,9 @@ import org.apache.commons.math.optimization.linear.LinearConstraint;
 import org.apache.commons.math.optimization.linear.Relationship;
 import org.junit.Before;
 import org.junit.Test;
+
+import fi.smaa.polysample.ConstraintFactory;
+import fi.smaa.polysample.Transformation;
 
 public class TransformationTest {
 

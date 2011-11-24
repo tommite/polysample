@@ -2,8 +2,8 @@
 <project>
   <modelVersion>4.0.0</modelVersion>
   <groupId>fi.smaa</groupId>
-  <artifactId>prefsample</artifactId>
-  <name>PreferenceSampler</name>
+  <artifactId>polysample</artifactId>
+  <name>PolytypeSampler</name>
   <version>0.1-SNAPSHOT</version>
 
   <repositories>
