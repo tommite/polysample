@@ -5,8 +5,10 @@ import java.util.List;
 import org.apache.commons.math.linear.Array2DRowRealMatrix;
 import org.apache.commons.math.linear.RealMatrix;
 import org.apache.commons.math.linear.RealVector;
+import org.apache.commons.math.optimization.OptimizationException;
 import org.apache.commons.math.optimization.linear.LinearConstraint;
 
+@SuppressWarnings("deprecation")
 public abstract class SimplexMCMCSampler extends SimplexSampler {
 
 	protected RealVector startingPoint;
@@ -42,10 +44,11 @@ public abstract class SimplexMCMCSampler extends SimplexSampler {
 	}
 	
 	@Override
-	public RealMatrix sample() {
+	public RealMatrix sample() throws OptimizationException {
 		Transformation tf = new Transformation(dim);
 		List<LinearConstraint> tfConstraints = tf.getTransformedConstraints(additionalConstraints);
-		RealMatrix chain = createChain(getNrChainPoints(), new LinearConstraintHitFunction(tfConstraints));
+		BoundingBox bounds = new BoundingBox(tfConstraints);
+		RealMatrix chain = createChain(getNrChainPoints(), bounds, new LinearConstraintHitFunction(tfConstraints));
 		return getSampledPoints(chain, tf);
 	}
 
@@ -70,7 +73,6 @@ public abstract class SimplexMCMCSampler extends SimplexSampler {
 	/**
 	 * Create dim-1 dimensional points 
 	 * @param nrPoints the amount of points desired
-	 * @param hitFunction function to check for hits
 	 */
-	public abstract RealMatrix createChain(int nrPoints, HitFunction hitFunction);
+	public abstract RealMatrix createChain(int nrPoints, BoundingBox bounds, HitFunction hitFunc);
 }

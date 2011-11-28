@@ -1,16 +1,16 @@
 package fi.smaa.polysample;
 
-import static org.junit.Assert.*;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
 import org.apache.commons.math.linear.ArrayRealVector;
 import org.apache.commons.math.linear.RealMatrix;
 import org.apache.commons.math.linear.RealVector;
+import org.apache.commons.math.optimization.OptimizationException;
 import org.junit.Before;
 import org.junit.Test;
 
-import fi.smaa.polysample.AdaptiveHARSampler;
-
+@SuppressWarnings("deprecation")
 public class AdaptiveHARSamplerTest {
 	
 	private AdaptiveHARSampler sampler;
@@ -23,7 +23,7 @@ public class AdaptiveHARSamplerTest {
 	}
 
 	@Test
-	public void testSample() {
+	public void testSample() throws OptimizationException {
 		sampler = new AdaptiveHARSampler(3, 10000, 10, 2, null) { };
 		RealMatrix pts = sampler.sample();
 		assertEquals(10000, pts.getRowDimension());

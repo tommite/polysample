@@ -4,8 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.math.linear.RealMatrix;
+import org.apache.commons.math.optimization.OptimizationException;
 import org.apache.commons.math.optimization.linear.LinearConstraint;
 
+@SuppressWarnings("deprecation")
 public abstract class SimplexSampler {
 	
 	protected int dim;
@@ -40,5 +42,5 @@ public abstract class SimplexSampler {
 		return nrSamples;
 	}
 	
-	public abstract RealMatrix sample();
+	public abstract RealMatrix sample() throws OptimizationException;
 }
